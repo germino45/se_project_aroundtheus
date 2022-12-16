@@ -13,47 +13,18 @@
   margin-bottom: 0;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .cards__list {
+    margin-top: 36px;
+    grid-template-columns: repeat(1, 282px);
+    grid-row-gap: 20px;
+  }
 }
 
-.card__image {
-  width: 282px;
-  height: 282px;
-}
-
-.card__info {
-  display: flex;
-  background-color: #fff;
-  color: black;
-  padding: 25px 20px 25px 20px;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 0 0 10px 10px;
-}
-
-.card__text {
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 29px;
-  margin: 0;
-}
-
-.card__text-overflow {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.card__button {
-  background: transparent url(../images/heart.svg) center no-repeat;
-  border: none;
-  width: 21px;
-  height: 18px;
-  padding: 0;
-}
-
-.card__button:hover {
-  opacity: 0.5;
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .cards__list {
+    margin-top: 36px;
+    grid-template-columns: repeat(2, 282px);
+    grid-row-gap: 20px;
+  }
 }

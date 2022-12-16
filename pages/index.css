@@ -4,125 +4,14 @@
 
 @import url(../blocks/header.css);
 
+@import url(../blocks/button.css);
+
 @import url(../blocks/profile.css);
 
 @import url(../blocks/cards.css);
 
+@import url(../blocks/card.css);
+
 @import url(../blocks/footer.css);
 
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("Inter-Medium.woff2?v=3.19") format("woff2"),
-    url("Inter-Medium.woff?v=3.19") format("woff");
-}
-
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("Inter-Regular.woff2?v=3.19") format("woff2"),
-    url("Inter-Regular.woff?v=3.19") format("woff");
-}
-
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: url("Inter-Black.woff2?v=3.19") format("woff2"),
-    url("Inter-Black.woff?v=3.19") format("woff");
-}
-
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  .page__section {
-    min-width: 282px;
-    max-width: 767px;
-  }
-
-  .header {
-    margin-top: 28px;
-  }
-
-  .header__logo {
-    margin-left: 27px;
-    margin-bottom: 32px;
-  }
-
-  .profile {
-    flex-direction: column;
-    max-width: 282px;
-    height: 286px;
-  }
-
-  .profile__info {
-    max-width: 270px;
-    margin-top: 26.25px;
-    margin-left: 0;
-    margin-bottom: 36px;
-    height: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .profile__title {
-    padding-left: 25px;
-    font-size: 22px;
-    line-height: 1.2;
-    text-align: center;
-  }
-
-  .profile__description {
-    margin-top: 14px;
-    font-size: 14px;
-    line-height: 1.2;
-    text-align: center;
-  }
-
-  .profile__edit-button {
-    margin-left: 10px;
-    width: 18px;
-    height: 18px;
-  }
-
-  .profile__add-button {
-    width: 282px;
-    height: 50px;
-    margin-left: 0;
-    padding: 0;
-  }
-
-  .cards__list {
-    margin-top: 36px;
-    grid-template-columns: repeat(1, 282px);
-    grid-row-gap: 20px;
-  }
-
-  .footer {
-    padding-top: 48px;
-  }
-
-  .footer__text {
-    max-width: 282px;
-    width: 100%;
-    margin: 0 auto;
-    font-size: 14px;
-    line-height: 1.2;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-  .page__section {
-    min-width: 768px;
-    max-width: 800px;
-  }
-  .cards__list {
-    margin-top: 36px;
-    grid-template-columns: repeat(2, 282px);
-    grid-row-gap: 20px;
-  }
-}
+@import url(../vendor/Inter\ Web/inter.css);
