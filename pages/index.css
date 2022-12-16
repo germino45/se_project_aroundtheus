@@ -96,7 +96,7 @@
     padding: 0;
   }
 
-  .card__list {
+  .cards__list {
     margin-top: 36px;
     grid-template-columns: repeat(1, 282px);
     grid-row-gap: 20px;
@@ -120,7 +120,7 @@
     min-width: 768px;
     max-width: 800px;
   }
-  .card__list {
+  .cards__list {
     margin-top: 36px;
     grid-template-columns: repeat(2, 282px);
     grid-row-gap: 20px;
