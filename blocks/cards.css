@@ -2,7 +2,7 @@
   font-family: "Inter", sans-serif;
 }
 
-.card__list {
+.cards__list {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, 282px);
