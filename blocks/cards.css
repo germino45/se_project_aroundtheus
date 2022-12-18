@@ -17,14 +17,12 @@
   .cards__list {
     margin-top: 36px;
     grid-template-columns: repeat(1, 282px);
-    grid-row-gap: 20px;
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) and (max-width: 1080px) {
   .cards__list {
     margin-top: 36px;
     grid-template-columns: repeat(2, 282px);
-    grid-row-gap: 20px;
   }
 }

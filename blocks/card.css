@@ -1,6 +1,8 @@
 .card {
   display: flex;
   flex-direction: column;
+  border-radius: 10px 10px 10px 10px;
+  overflow: hidden;
 }
 
 .card__image {
@@ -15,7 +17,6 @@
   padding: 25px 20px 25px 20px;
   align-items: center;
   justify-content: space-between;
-  border-radius: 0 0 10px 10px;
 }
 
 .card__text {
@@ -24,9 +25,6 @@
   font-size: 24px;
   line-height: 29px;
   margin: 0;
-}
-
-.card__text-overflow {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -42,5 +40,5 @@
 }
 
 .card__button:hover {
-  opacity: 0.5;
+  opacity: 0.6;
 }

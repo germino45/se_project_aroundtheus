@@ -1,19 +1,19 @@
-# Around the US
+# Project 3: Around The U.S.
 
-This is the third project of the Software Engineer program at Practicum. It was created using HTML and CSS, based on the design on Figma.
+### Overview
 
-## Project features
+- Intro
+- Website
+- Images
 
-- Grid layout
-- Positioning
-- Flat BEM
-- Responsive layout between 320px and 1280px
+**Intro**
 
-## Plan on improving the project
+This is the third project of the Software Engineer program at Practicum. It was created using HTML and CSS, based on the Figma design. This has a responsive layout and was designed to be displayed correctly across all the popular devices.
 
-- Improve hover states of buttons.
-- Improve naming convention.
+**Figma**
+
+https://germino45.github.io/se_project_aroundtheus/
+
+## Pictures
 
 ## Website
-
-- https://germino45.github.io/se_project_aroundtheus/
