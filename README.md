@@ -18,12 +18,12 @@ https://germino45.github.io/se_project_aroundtheus/
 
 Mobile Device:
 
-![](2022-12-18-11-24-05.png)
+![](./images/2022-12-18-11-24-05.png)
 
 Tablet:
 
-![](2022-12-18-11-24-48.png)
+![](./images/2022-12-18-11-24-48.png)
 
 Desktop:
 
-![](2022-12-18-11-25-20.png)
+![](./images/2022-12-18-11-25-20.png)
