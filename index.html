@@ -11,6 +11,27 @@
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
   </head>
   <body class="page">
+    <div class="modal modal_opened">
+      <div class="modal__container">
+        <button type="button" class="modal__close-button button"></button>
+        <form class="modal__container-form">
+          <fieldset class="form__fieldset">
+            <h2 class="form__header">Edit profile</h2>
+            <input
+              type="text"
+              class="form__input form__input-name"
+              placeholder="Name"
+            />
+            <input
+              type="text"
+              class="form__input form__about-me"
+              placeholder="Descripton"
+            />
+            <button type="button" class="form__save-button button">Save</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
     <div class="page__content">
       <header class="header page__section">
         <img src="./images/logo.svg" alt="Around The US" class="header__logo" />
