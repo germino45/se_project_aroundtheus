@@ -3,6 +3,7 @@
 }
 
 .modal {
+  display: none;
   justify-content: center;
   align-content: center;
   position: relative;
