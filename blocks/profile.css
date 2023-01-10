@@ -30,6 +30,8 @@
   line-height: 1.14;
   grid-area: title;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .profile__description {
@@ -38,6 +40,8 @@
   line-height: 1.2;
   grid-area: description;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .profile__edit-button {
