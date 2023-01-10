@@ -67,8 +67,6 @@ initialCards.forEach((data) => {
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
   cardTitleEl.textContent = data.name;
-  document.write(cardElement);
-  console.log(cardElement);
   cardsList.append(cardElement);
 });
 
