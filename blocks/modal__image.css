@@ -19,7 +19,7 @@
   line-height: 15px;
 }
 
-.modal__image_close {
+.modal__image-close {
   position: absolute;
   top: -41px;
   left: 820px;
@@ -37,7 +37,7 @@
     height: 299px;
   }
 
-  .modal__image_close {
+  .modal__image-close {
     width: 30px;
     height: 30px;
     bottom: 410px;
@@ -50,7 +50,7 @@
     width: 433px;
   }
 
-  .modal__image_close {
+  .modal__image-close {
     left: 435px;
   }
 }
