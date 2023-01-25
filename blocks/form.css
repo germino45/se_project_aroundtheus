@@ -1,5 +1,8 @@
-.form__fieldset {
+.form {
   font-family: "Inter", sans-serif;
+}
+
+.form__fieldset {
   border: none;
   margin: 34px 36px 36px;
   padding: 0;
