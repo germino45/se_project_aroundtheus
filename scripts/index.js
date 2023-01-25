@@ -59,7 +59,7 @@ const placeInput = document.querySelector("#place-title-input");
 
 const addCloseButton = document.querySelector("#add-close-button");
 
-const addForm = document.querySelector("#add-form");
+const addCardForm = document.querySelector("#add-form");
 
 const addFormFieldset = document.querySelector("#add-form-fieldset");
 
@@ -70,6 +70,8 @@ const imageURLInput = document.querySelector("#image-url-input");
 const addCreateButton = document.querySelector("#add-create-button");
 
 /* ---------------------------- card image modal ---------------------------- */
+
+const imageModal = document.querySelector("#image-modal");
 
 const imageCloseButton = document.querySelector("#image-close-button");
 
@@ -102,7 +104,6 @@ function getCardView(card) {
   const cardTitleEl = cardElement.querySelector(".card__text");
   const likeButton = cardElement.querySelector("#card-like-button");
   const deleteButton = cardElement.querySelector("#card-delete-button");
-  const imageModal = document.querySelector("#image-modal");
 
   cardImageEl.src = card.link;
   cardImageEl.alt = card.name;
@@ -123,10 +124,6 @@ function getCardView(card) {
     modalImageEl.alt = card.name;
     modalImageCap.textContent = card.name;
     openModal(imageModal);
-  });
-
-  imageCloseButton.addEventListener("click", () => {
-    closeModal(imageModal);
   });
 
   return cardElement;
@@ -171,7 +168,7 @@ addCloseButton.addEventListener("click", () => {
   closeModal(addModal);
 });
 
-addForm.addEventListener("submit", (e) => {
+addCardForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const title = e.target.title.value;
   const link = e.target.link.value;
@@ -181,4 +178,11 @@ addForm.addEventListener("submit", (e) => {
   });
   renderCard(cardView, cardsList);
   closeModal(addModal);
+  addCardForm.reset();
+});
+
+/* ----------------------- image modal event listeners ---------------------- */
+
+imageCloseButton.addEventListener("click", () => {
+  closeModal(imageModal);
 });
