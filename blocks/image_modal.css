@@ -1,0 +1,56 @@
+.image__modal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  max-height: 75vh;
+  max-width: 75vw;
+  top: 90px;
+}
+
+.image__modal-picture {
+  width: 816px;
+  height: 540px;
+}
+
+.image__modal-caption {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.image__close {
+  position: absolute;
+  top: -41px;
+  left: 820px;
+  width: 40px;
+  height: 40px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .image__modal {
+    top: 136px;
+  }
+
+  .image__modal-picture {
+    width: 240px;
+    height: 299px;
+  }
+
+  .image__close {
+    width: 30px;
+    height: 30px;
+    bottom: 410px;
+    left: 250px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1080px) {
+  .image__modal-picture {
+    width: 433px;
+  }
+
+  .image__close {
+    left: 435px;
+  }
+}

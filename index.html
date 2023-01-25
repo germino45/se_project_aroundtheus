@@ -24,10 +24,18 @@
           />
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
-            <button type="button" class="button profile__edit-button"></button>
+            <button
+              type="button"
+              class="button profile__edit-button"
+              id="profile-edit-button"
+            ></button>
             <p class="profile__description">Explorer</p>
           </div>
-          <button type="button" class="button profile__add-button"></button>
+          <button
+            type="button"
+            class="button card__add-button"
+            id="card-add-button"
+          ></button>
         </section>
         <section class="cards page__section">
           <ul class="cards__list"></ul>
@@ -37,16 +45,22 @@
         <p class="footer__text">© 2022 Around The U.S.</p>
       </footer>
 
-      <!--modal-->
-      <div class="modal__container">
+      <!-- ----------------------------------------------------------------------- -->
+      <!--                           profile edit modal                            -->
+      <!-- ----------------------------------------------------------------------- -->
+      <div class="modal__container" id="profile-modal">
         <div class="modal">
-          <button type="button" class="modal__close-button button"></button>
-          <form class="modal__container-form">
-            <fieldset class="form__fieldset">
-              <h2 class="form__header">Edit profile</h2>
+          <button
+            type="button"
+            class="modal__close-button button"
+            id="profile-close-button"
+          ></button>
+          <form class="modal__container-form" id="profile-form">
+            <fieldset class="form__fieldset" id="profile-form-fieldset">
+              <h2 class="form__header" id="profile-header">Edit profile</h2>
               <input
                 type="text"
-                class="form__input form__input-name"
+                class="form__input form__input-top"
                 placeholder="Name"
                 name="title"
                 id="profile-title-input"
@@ -54,13 +68,17 @@
               />
               <input
                 type="text"
-                class="form__input form__about-me"
+                class="form__input form__input-bottom"
                 placeholder="Descripton"
                 name="description"
                 id="profile-description-input"
                 required
               />
-              <button type="submit" class="form__save-button button">
+              <button
+                type="submit"
+                class="form__save-button button"
+                id="profile-save-button"
+              >
                 Save
               </button>
             </fieldset>
@@ -68,13 +86,80 @@
         </div>
       </div>
 
-      <!--card template-->
+      <!-- ----------------------------------------------------------------------- -->
+      <!--                                add card modal                           -->
+      <!-- ----------------------------------------------------------------------- -->
+      <div class="modal__container" id="add-modal">
+        <div class="modal">
+          <button
+            type="button"
+            class="modal__close-button button"
+            id="add-close-button"
+          ></button>
+          <form class="modal__container-form" id="add-form">
+            <fieldset class="form__fieldset" id="add-form-fieldset">
+              <h2 class="form__header" id="add-header">New Place</h2>
+              <input
+                type="text"
+                class="form__input form__input-top"
+                placeholder="Title"
+                name="title"
+                id="place-title-input"
+                required
+              />
+              <input
+                type="text"
+                class="form__input form__input-bottom"
+                placeholder="Image URL"
+                name="link"
+                id="image-url-input"
+                required
+              />
+              <button
+                type="submit"
+                class="form__save-button button"
+                id="add-create-button"
+              >
+                Create
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+
+      <!-- ----------------------------------------------------------------------- -->
+      <!--                               image modal                               -->
+      <!-- ----------------------------------------------------------------------- -->
+      <div class="modal__container" id="image-modal">
+        <div class="image__modal">
+          <button
+            type="button"
+            class="modal__close-button image__close button"
+            id="image-close-button"
+          ></button>
+          <img src="" alt="" class="image__modal-picture" />
+          <p class="image__modal-caption"></p>
+        </div>
+      </div>
+
+      <!-- ----------------------------------------------------------------------- -->
+      <!--                              card template                              -->
+      <!-- ----------------------------------------------------------------------- -->
       <template id="card-template">
-        <li class="card">
-          <img class="card__image" src="" alt="" />
+        <li class="card" id="card">
+          <button
+            type="button"
+            class="button card__delete-button"
+            id="card-delete-button"
+          ></button>
+          <input type="image" src="" alt="" class="card__image" />
           <div class="card__info">
             <h2 class="card__text"></h2>
-            <button type="button" class="button card__button"></button>
+            <button
+              type="button"
+              class="button card__like-button"
+              id="card-like-button"
+            ></button>
           </div>
         </li>
       </template>

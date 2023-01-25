@@ -26,11 +26,11 @@
   line-height: 17px;
 }
 
-.form__input-name {
+.form__input-top {
   margin-bottom: 30px;
 }
 
-.form__about-me {
+.form__input-bottom {
   margin-bottom: 48px;
 }
 
