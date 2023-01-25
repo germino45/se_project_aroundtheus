@@ -1,4 +1,4 @@
-.image__modal {
+.modal__image-popup {
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -7,19 +7,19 @@
   top: 90px;
 }
 
-.image__modal-picture {
+.modal__image-picture {
   width: 816px;
   height: 540px;
 }
 
-.image__modal-caption {
+.modal__image-caption {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
 }
 
-.image__close {
+.modal__image_close {
   position: absolute;
   top: -41px;
   left: 820px;
@@ -28,29 +28,29 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .image__modal {
+  .modal__image-popup {
     top: 136px;
   }
 
-  .image__modal-picture {
+  .modal__image-picture {
     width: 240px;
     height: 299px;
   }
 
-  .image__close {
+  .modal__image_close {
     width: 30px;
     height: 30px;
     bottom: 410px;
-    left: 250px;
+    left: 240px;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1080px) {
-  .image__modal-picture {
+  .modal__image-picture {
     width: 433px;
   }
 
-  .image__close {
+  .modal__image_close {
     left: 435px;
   }
 }

@@ -117,8 +117,8 @@ function getCardView(card) {
   });
 
   cardImageEl.addEventListener("click", () => {
-    const modalImageEl = imageModal.querySelector(".image__modal-picture");
-    const modalImageCap = imageModal.querySelector(".image__modal-caption");
+    const modalImageEl = imageModal.querySelector(".modal__image-picture");
+    const modalImageCap = imageModal.querySelector(".modal__image-caption");
     modalImageEl.src = card.link;
     modalImageEl.alt = card.name;
     modalImageCap.textContent = card.name;
