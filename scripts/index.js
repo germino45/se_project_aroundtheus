@@ -9,7 +9,7 @@ const initialCards = [
   },
   {
     name: "Bald Mountains",
-    link: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/bald-mountain-sunset-gina-herbert.jpg",
+    link: "https://www.roadtripryan.com/go/resources/content/utah/northern-utah/bald-moutain-uintas/user-submitted/ryancornia-1631641778217.jpg",
   },
   {
     name: "Latemar",
@@ -28,8 +28,6 @@ const initialCards = [
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
 /* -------------------------------------------------------------------------- */
-
-const modal = document.querySelectorAll(".modal");
 
 /* ------------------------------ Profile Modal ----------------------------- */
 
@@ -90,12 +88,29 @@ const cardTemplate =
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 
+function closeModalByEscape(e) {
+  if (e.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    closeModal(openedModal);
+  }
+}
+
+function closeModalOnRemoteClick(e) {
+  if (e.target.classList.contains("modal")) {
+    closeModal(e.target);
+  }
+}
+
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeModalByEscape);
+  modal.removeEventListener("mousedown", closeModalOnRemoteClick);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalByEscape);
+  modal.addEventListener("mousedown", closeModalOnRemoteClick);
 }
 
 function renderCard(cardElement, container) {
@@ -143,20 +158,6 @@ initialCards.forEach((card) => {
 /* -------------------------------------------------------------------------- */
 
 /* -------------------------------- document -------------------------------- */
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    closeModal(addModal);
-    closeModal(profileModal);
-    closeModal(imageModal);
-  }
-});
-
-document.addEventListener("mousedown", (e) => {
-  if (e.target.classList.contains("modal")) {
-    closeModal(e.target);
-  }
-});
 
 /* ------------------------- profile event listeners ------------------------ */
 
