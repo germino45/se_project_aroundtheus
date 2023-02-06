@@ -1,0 +1,72 @@
+export const config = {
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__save-button",
+  inactiveButtonClass: "form__save-button_disabled",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__input-error",
+};
+
+function showInputError(formEl, inputEl, errorMessage) {
+  const errorEl = formEl.querySelector(`.${inputEl.id}-error`);
+  inputEl.classList.add("form__input_type_errpr");
+  errorEl.textContent = errorMessage;
+  errorEl.classList.add("form__input-error");
+}
+
+function hideInputError(formEl, inputEl) {
+  const errorEl = formEl.querySelector(`.${inputEl.id}-error`);
+  inputEl.classList.remove("form__input_type_error");
+  errorEl.classList.remove("form__input-error");
+  errorEl.textContent = "";
+}
+
+function checkInputValidity(formEl, inputEl) {
+  if (!inputEl.validity.valid) {
+    showInputError(formEl, inputEl, inputEl.validationMessage);
+  } else {
+    hideInputError(formEl, inputEl);
+  }
+}
+
+function hasInvalidInput(inputList) {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+}
+
+function toggleButtonState(inputList, buttonEl) {
+  if (hasInvalidInput(inputList)) {
+    buttonEl.classList.add("form__save-button_disabled");
+  } else {
+    buttonEl.classList.remove("form__save-button_disabled");
+  }
+}
+
+function setEventListeners(formEl, options) {
+  const { inputSelector } = options;
+  const inputEls = Array.from(formEl.querySelectorAll(inputSelector));
+  const buttonEl = formEl.querySelector(".form__save-button");
+
+  toggleButtonState(inputEls, buttonEl);
+
+  inputEls.forEach((inputEl) => {
+    inputEl.addEventListener("input", function () {
+      checkInputValidity(formEl, inputEl);
+      toggleButtonState(inputEls, buttonEl);
+    });
+  });
+}
+
+function enableValidation(options) {
+  const formEls = Array.from(document.querySelectorAll(options.formSelector));
+  formEls.forEach((formEl) => {
+    formEl.addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
+    const fieldSet = Array.from(formEl.querySelectorAll(".form"));
+    setEventListeners(formEl, options);
+  });
+}
+
+enableValidation(config);

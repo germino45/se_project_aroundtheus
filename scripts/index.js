@@ -29,6 +29,8 @@ const initialCards = [
 /*                                  Elements                                  */
 /* -------------------------------------------------------------------------- */
 
+const modal = document.querySelectorAll(".modal");
+
 /* ------------------------------ Profile Modal ----------------------------- */
 
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -81,6 +83,8 @@ const cardsList = document.querySelector(".cards__list");
 
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
+
+/* ---------------------------------- form ---------------------------------- */
 
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
@@ -137,6 +141,22 @@ initialCards.forEach((card) => {
 /* -------------------------------------------------------------------------- */
 /*                               event listeners                              */
 /* -------------------------------------------------------------------------- */
+
+/* -------------------------------- document -------------------------------- */
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeModal(addModal);
+    closeModal(profileModal);
+    closeModal(imageModal);
+  }
+});
+
+document.addEventListener("mousedown", (e) => {
+  if (e.target.classList.contains("modal")) {
+    closeModal(e.target);
+  }
+});
 
 /* ------------------------- profile event listeners ------------------------ */
 

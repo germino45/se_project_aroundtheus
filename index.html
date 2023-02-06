@@ -55,25 +55,39 @@
             class="modal__close-button button"
             id="profile-close-button"
           ></button>
-          <form class="form" id="profile-form">
+          <form class="form" id="profile-form" novalidate>
             <fieldset class="form__fieldset" id="profile-form-fieldset">
               <h2 class="form__header" id="profile-header">Edit profile</h2>
-              <input
-                type="text"
-                class="form__input form__input-top"
-                placeholder="Name"
-                name="title"
-                id="profile-title-input"
-                required
-              />
-              <input
-                type="text"
-                class="form__input form__input-bottom"
-                placeholder="Descripton"
-                name="description"
-                id="profile-description-input"
-                required
-              />
+              <label class="form__field">
+                <input
+                  type="text"
+                  class="form__input form__input-top"
+                  placeholder="Name"
+                  name="title"
+                  id="profile-title-input"
+                  minlength="2"
+                  maxlength="40"
+                  required
+                />
+                <span
+                  class="profile-title-input-error form__input-error"
+                ></span>
+              </label>
+              <label class="form__field form__field_bottom">
+                <input
+                  type="text"
+                  class="form__input form__input-bottom"
+                  placeholder="Descripton"
+                  name="description"
+                  id="profile-description-input"
+                  minlength="2"
+                  maxlength="200"
+                  required
+                />
+                <span
+                  class="profile-description-input-error form__input-error"
+                ></span>
+              </label>
               <button
                 type="submit"
                 class="form__save-button button"
@@ -96,25 +110,33 @@
             class="modal__close-button button"
             id="add-close-button"
           ></button>
-          <form class="form" id="add-form">
+          <form class="form" id="add-form" novalidate>
             <fieldset class="form__fieldset" id="add-form-fieldset">
               <h2 class="form__header" id="add-header">New Place</h2>
-              <input
-                type="text"
-                class="form__input form__input-top"
-                placeholder="Title"
-                name="title"
-                id="place-title-input"
-                required
-              />
-              <input
-                type="text"
-                class="form__input form__input-bottom"
-                placeholder="Image URL"
-                name="link"
-                id="image-url-input"
-                required
-              />
+              <label class="form__field">
+                <input
+                  type="text"
+                  class="form__input form__input-top"
+                  placeholder="Title"
+                  name="title"
+                  id="place-title-input"
+                  minlength="1"
+                  maxlength="30"
+                  required
+                />
+                <span class="place-title-input-error form__input-error"></span>
+              </label>
+              <label class="form__field form__field_bottom"
+                ><input
+                  type="url"
+                  class="form__input form__input-bottom"
+                  placeholder="Image URL"
+                  name="link"
+                  id="image-url-input"
+                  required
+                />
+                <span class="image-url-input-error form__input-error"></span>
+              </label>
               <button
                 type="submit"
                 class="form__save-button button"
@@ -164,6 +186,7 @@
         </li>
       </template>
     </div>
-    <script src="./scripts/index.js" defer></script>
+    <script type="module" src="./scripts/index.js" defer></script>
+    <script type="module" src="./scripts/validation.js" defer></script>
   </body>
 </html>
