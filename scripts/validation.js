@@ -41,13 +41,13 @@ function hasInvalidInput(inputList) {
   });
 }
 
-function toggleButtonState(inputEls, buttonEl) {
+function toggleButtonState(inputEls, buttonEl, validationConfig) {
   if (hasInvalidInput(inputEls)) {
-    buttonEl.classList.add(config.inactiveButtonClass);
+    buttonEl.classList.add(validationConfig.inactiveButtonClass);
     buttonEl.disabled = true;
     return;
   }
-  buttonEl.classList.remove(config.inactiveButtonClass);
+  buttonEl.classList.remove(validationConfig.inactiveButtonClass);
   buttonEl.disabled = false;
 }
 
@@ -56,12 +56,12 @@ function setEventListeners(formEl, validationConfig) {
   const inputEls = Array.from(formEl.querySelectorAll(inputSelector));
   const buttonEl = formEl.querySelector(validationConfig.submitButtonSelector);
 
-  toggleButtonState(inputEls, buttonEl);
+  toggleButtonState(inputEls, buttonEl, config);
 
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", function () {
       checkInputValidity(formEl, inputEl, validationConfig);
-      toggleButtonState(inputEls, buttonEl);
+      toggleButtonState(inputEls, buttonEl, config);
     });
   });
 }

@@ -161,10 +161,9 @@ initialCards.forEach((card) => {
 
 /* ------------------------- profile event listeners ------------------------ */
 
-profileEditButton.addEventListener("click", () => {
+profileEditButton.addEventListener("click", (e) => {
   titleInput.value = profileTitle.textContent;
   descriptionInput.value = profileDescription.textContent;
-  profileSaveButton.classList.remove(config.inactiveButtonClass);
 
   openModal(profileModal);
 });
@@ -201,7 +200,7 @@ addCardForm.addEventListener("submit", (e) => {
   renderCard(cardView, cardsList);
   closeModal(addModal);
   addCardForm.reset();
-  addCreateButton.classList.toggle(config.inactiveButtonClass);
+  toggleButtonState([e.target.title, e.target.link], addCreateButton, config);
 });
 
 /* ----------------------- image modal event listeners ---------------------- */
