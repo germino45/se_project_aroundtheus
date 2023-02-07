@@ -161,7 +161,7 @@ initialCards.forEach((card) => {
 
 /* ------------------------- profile event listeners ------------------------ */
 
-profileEditButton.addEventListener("click", (e) => {
+profileEditButton.addEventListener("click", () => {
   titleInput.value = profileTitle.textContent;
   descriptionInput.value = profileDescription.textContent;
 
