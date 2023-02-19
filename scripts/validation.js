@@ -78,7 +78,3 @@ function enableValidation(validationConfig) {
     setEventListeners(formEl, validationConfig);
   });
 }
-
-//function resetValidation() {
-
-//}

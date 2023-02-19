@@ -1,3 +1,5 @@
+import FormValidator from "./formValidator.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -54,8 +56,6 @@ const profileDescription = document.querySelector(".profile__description");
 const cardAddButton = document.querySelector("#card-add-button");
 
 const addModal = document.querySelector("#add-modal");
-
-const placeInput = document.querySelector("#place-title-input");
 
 const addCloseButton = document.querySelector("#add-close-button");
 
@@ -157,14 +157,13 @@ initialCards.forEach((card) => {
 /*                               event listeners                              */
 /* -------------------------------------------------------------------------- */
 
-/* -------------------------------- document -------------------------------- */
-
 /* ------------------------- profile event listeners ------------------------ */
 
 profileEditButton.addEventListener("click", () => {
   titleInput.value = profileTitle.textContent;
   descriptionInput.value = profileDescription.textContent;
 
+  editFormValidator.enableValidation();
   openModal(profileModal);
 });
 
@@ -200,7 +199,7 @@ addCardForm.addEventListener("submit", (e) => {
   renderCard(cardView, cardsList);
   closeModal(addModal);
   addCardForm.reset();
-  toggleButtonState([e.target.title, e.target.link], addCreateButton, config);
+  addFormValidator.enableValidation();
 });
 
 /* ----------------------- image modal event listeners ---------------------- */
@@ -208,3 +207,25 @@ addCardForm.addEventListener("submit", (e) => {
 imageCloseButton.addEventListener("click", () => {
   closeModal(imageModal);
 });
+
+/* -------------------------------------------------------------------------- */
+/*                                 validation                                 */
+/* -------------------------------------------------------------------------- */
+
+const validationSettings = {
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__save-button",
+  inactiveButtonClass: "form__save-button_disabled",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__input-error",
+};
+
+const editFormEl = profileForm;
+const addFormEl = addCardForm;
+
+const editFormValidator = new FormValidator(validationSettings, editFormEl);
+const addFormValidator = new FormValidator(validationSettings, addFormEl);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();

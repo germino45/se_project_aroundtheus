@@ -8,7 +8,7 @@
 
 **Intro**
 
-This is the third project of the Software Engineer program at Practicum. It was created using HTML and CSS, based on the Figma design. This has a responsive layout and was designed to be displayed correctly across all the popular devices.
+This is the sixth project of the Software Engineer program at Practicum. It was created using HTML, CSS, and JavaScript based on the Figma design. This has a responsive layout and was designed to be displayed correctly across all the popular devices. This also has dynamic form validation and the ability to change your name and add new cards to the website.
 
 **Website**
 
