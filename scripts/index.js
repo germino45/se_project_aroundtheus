@@ -110,6 +110,13 @@ initialCards.forEach(function (data) {
   renderCard(data, cardsList);
 });
 
+/* ---------------------------- profile functions --------------------------- */
+
+function fillProfileForm() {
+  titleInput.value = profileTitle.textContent;
+  descriptionInput.value = profileDescription.textContent;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                               event listeners                              */
 /* -------------------------------------------------------------------------- */
@@ -117,10 +124,10 @@ initialCards.forEach(function (data) {
 /* ------------------------- profile event listeners ------------------------ */
 
 profileEditButton.addEventListener("click", () => {
-  titleInput.value = profileTitle.textContent;
-  descriptionInput.value = profileDescription.textContent;
+  fillProfileForm();
 
   editFormValidator.toggleButtonState();
+
   openModal(profileModal);
 });
 
