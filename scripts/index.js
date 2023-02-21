@@ -117,6 +117,11 @@ function fillProfileForm() {
   descriptionInput.value = profileDescription.textContent;
 }
 
+function displayProfileInfo() {
+  profileTitle.textContent = titleInput.value;
+  profileDescription.textContent = descriptionInput.value;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                               event listeners                              */
 /* -------------------------------------------------------------------------- */
@@ -137,8 +142,7 @@ profileCloseButton.addEventListener("click", () => {
 
 profileForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  profileTitle.textContent = titleInput.value;
-  profileDescription.textContent = descriptionInput.value;
+  displayProfileInfo();
   closeModal(profileModal);
 });
 
