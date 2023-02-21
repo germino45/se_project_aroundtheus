@@ -2,16 +2,16 @@
 /*                                   Imports                                  */
 /* -------------------------------------------------------------------------- */
 
-import FormValidator from "./formValidator.js";
+import FormValidator from "./FormValidator.js";
 
-import Card from "./card.js";
+import Card from "./Card.js";
 
 import {
   closeModalByEscape,
   closeModalOnRemoteClick,
   closeModal,
   openModal,
-} from "./utils.js";
+} from "./Utils.js";
 
 /* -------------------------------------------------------------------------- */
 /*                                    Array                                   */
@@ -120,7 +120,7 @@ profileEditButton.addEventListener("click", () => {
   titleInput.value = profileTitle.textContent;
   descriptionInput.value = profileDescription.textContent;
 
-  editFormValidator.enableValidation();
+  editFormValidator.toggleButtonState();
   openModal(profileModal);
 });
 
@@ -157,7 +157,7 @@ addCardForm.addEventListener("submit", (e) => {
 
   closeModal(addModal);
 
-  addFormValidator.enableValidation();
+  addFormValidator.toggleButtonState();
 });
 
 /* ------------------- Image Modal Preview Event Listeners ------------------ */
@@ -179,11 +179,8 @@ const validationSettings = {
   errorClass: "form__input-error",
 };
 
-const editFormEl = profileForm;
-const addFormEl = addCardForm;
-
-const editFormValidator = new FormValidator(validationSettings, editFormEl);
-const addFormValidator = new FormValidator(validationSettings, addFormEl);
+const editFormValidator = new FormValidator(validationSettings, profileForm);
+const addFormValidator = new FormValidator(validationSettings, addCardForm);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();

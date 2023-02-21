@@ -1,4 +1,4 @@
-import { openModal } from "./utils.js";
+import { openModal } from "./Utils.js";
 
 const imageModal = document.querySelector("#image-modal");
 const modalCardImage = document.querySelector(".modal__image-picture");
@@ -17,9 +17,7 @@ export default class Card {
     this._likeButton.addEventListener("click", this._handleLikeIcon);
 
     this._deleteButton = this._element.querySelector("#card-delete-button");
-    this._deleteButton.addEventListener("click", () =>
-      this._handleDeleteCard()
-    );
+    this._deleteButton.addEventListener("click", this._handleDeleteCard);
 
     this._cardImageEl = this._element.querySelector(".card__image");
     this._cardImageEl.addEventListener("click", () =>
@@ -31,11 +29,11 @@ export default class Card {
     this._likeButton.classList.toggle("card__like-button_activated");
   };
 
-  _handleDeleteCard() {
+  _handleDeleteCard = () => {
     this._element.remove();
 
     this._element = null;
-  }
+  };
 
   _handlePreviewPicture() {
     modalCardImage.src = this._link;
