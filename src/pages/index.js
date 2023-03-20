@@ -81,10 +81,6 @@ profileEditButton.addEventListener("click", () => {
   openEditForm();
 });
 
-profileCloseButton.addEventListener("click", () => {
-  editFormPopup.close();
-});
-
 cardAddButton.addEventListener("click", () => {
   openAddForm();
 });
@@ -97,7 +93,7 @@ function openEditForm() {
   const profileInfo = userInfo.getUserInfo();
   titleInput.value = profileInfo.name;
   descriptionInput.value = profileInfo.job;
-  editFormValidator.enableValidation();
+  editFormValidator.toggleButtonState();
   editFormPopup.open();
 }
 
@@ -108,20 +104,25 @@ function submitEditProfile(inputValues) {
 
 function openAddForm() {
   addFormPopup.open();
-  addFormValidator.enableValidation();
+  addFormValidator.toggleButtonState();
 }
 
 function submitAddCard(data) {
-  renderCard({ name: data.name, link: data.link });
+  renderCard({ name: data.title, link: data.link });
 }
 
 function renderCard(data) {
-  const card = new Card(
-    data,
+  const card = createCard(data);
+  cardSection.addItem(card);
+}
+
+function createCard(item) {
+  const cardElement = new Card(
+    item,
     containerSelectors.cardTemplate,
     handleImageClick
   ).getView();
-  cardSection.addItem(card);
+  return cardElement;
 }
 
 function handleImageClick(name, link) {
