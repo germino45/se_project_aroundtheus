@@ -30,7 +30,6 @@ import {
   titleInput,
   descriptionInput,
   profileForm,
-  profileCloseButton,
   profileTitle,
   profileDescription,
   cardAddButton,
