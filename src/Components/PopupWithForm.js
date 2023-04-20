@@ -6,6 +6,7 @@ class PopupWithForm extends Popup {
 
     this._popupForm = this._popupElement.querySelector(".form");
     this._inputs = this._popupForm.querySelectorAll(".form__input");
+    this._saveButton = this._popupForm.querySelector(".form__save-button");
     this._handleFormSubmit = handleFormSubmit;
   }
 
@@ -31,6 +32,14 @@ class PopupWithForm extends Popup {
   close() {
     this._popupForm.reset();
     super.close();
+  }
+
+  renderLoading(isLoading, saveButtonText) {
+    if (isLoading) {
+      this._saveButton.textContent = "Saving...";
+    } else {
+      this._saveButton.textContent = saveButtonText;
+    }
   }
 }
 

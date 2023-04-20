@@ -13,6 +13,27 @@
   object-position: center;
 }
 
+.profile__picture-edit {
+  background: transparent url(../images/profile_picture_edit_button.svg) center
+    no-repeat;
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: none;
+  top: 50px;
+  left: 50px;
+  visibility: hidden;
+}
+
+.profile__image-container:hover {
+  opacity: 0.8;
+}
+
+.profile__image-container:hover .profile__picture-edit {
+  visibility: visible;
+  transition: opacity 0.3s linear;
+}
+
 .profile__info {
   display: grid;
   grid-template-areas:

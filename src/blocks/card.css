@@ -77,6 +77,11 @@
   background: url(../images/like_button_active.svg);
 }
 
+.card__likes-counter {
+  width: 9px;
+  height: 13px;
+}
+
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .profile__button-add {
     background-size: 16px;

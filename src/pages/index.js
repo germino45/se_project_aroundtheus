@@ -36,15 +36,24 @@ import {
   addCardForm,
 } from "../utils/constants.js";
 
+import Api from "../Components/Api.js";
+
 /* -------------------------------------------------------------------------- */
 /*                                  elements                                  */
 /* -------------------------------------------------------------------------- */
 
-headerImage.src = headerImageSrc;
+let userId;
+let cardSection;
 
-profileImage.src = profileImageSrc;
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/group-12",
+  headers: {
+    authorization: "524dc900-b8ae-4b17-aa07-465dc385d766",
+    "Content-type": "application/json",
+  },
+});
 
-const userInfo = new UserInfo(profileTitle, profileDescription);
+const userInfo = new UserInfo(profileTitle, profileDescription, profileImage);
 
 const editFormPopup = new PopupWithForm(
   containerSelectors.profilePopup,
@@ -53,17 +62,27 @@ const editFormPopup = new PopupWithForm(
 
 const addFormPopup = new PopupWithForm(
   containerSelectors.addCardPopup,
-  submitAddCard
+  (name, link) => {
+    addFormPopup.renderLoading(true);
+    api
+      .addNewCard(name, link)
+      .then((data) => {
+        const card = createCard(data);
+        addCardPopup.close();
+        cardSection.addItem(card.renderCard());
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        addFormPopup.renderLoading(false, "Create");
+      });
+  }
 );
 
 const imagePopup = new PopupWithImage(
   containerSelectors.cardPreviewPopup,
   handleImageClick
-);
-
-const cardSection = new Section(
-  { items: initialCards, renderer: renderCard },
-  containerSelectors.cardSection
 );
 
 /* -------------------------------------------------------------------------- */
@@ -73,8 +92,6 @@ const cardSection = new Section(
 editFormPopup.setEventListeners();
 addFormPopup.setEventListeners();
 imagePopup.setEventListeners();
-
-cardSection.renderItems();
 
 profileEditButton.addEventListener("click", () => {
   openEditForm();
@@ -97,9 +114,36 @@ function openEditForm() {
 }
 
 function submitEditProfile(inputValues) {
-  userInfo.setUserInfo(inputValues.title, inputValues.description);
-  editFormPopup.close();
+  editFormPopup.renderLoading(true);
+  return api
+    .editUserInfo(inputValues.title, inputValues.description)
+    .then(() => {
+      userInfo.setUserInfo(inputValues.title, inputValues.description);
+      editFormPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      editFormPopup.renderLoading(false, "Save");
+    });
 }
+
+api
+  .getApiInfo()
+  .then(([userData, userCards]) => {
+    userId = userData._id;
+    userInfo.setUserInfo(userData);
+    userInfo.setAvatar(userData);
+    const cardSection = new Section(
+      { items: userCards, renderer: renderCard },
+      containerSelectors.cardSection
+    );
+    cardSection.renderItems();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 function openAddForm() {
   addFormPopup.open();
