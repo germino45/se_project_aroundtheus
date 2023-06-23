@@ -16,6 +16,8 @@ import PopupWithImage from "../Components/PopupWithImage.js";
 
 import PopupWithForm from "../Components/PopupWithForm.js";
 
+import PopupWithConfirm from "../Components/PopupWithConfirm.js";
+
 import UserInfo from "../Components/UserInfo.js";
 
 import Card from "../Components/Card.js";
@@ -135,7 +137,7 @@ api
     userId = userData._id;
     userInfo.setUserInfo(userData);
     userInfo.setAvatar(userData);
-    const cardSection = new Section(
+    cardSection = new Section(
       { items: userCards, renderer: renderCard },
       containerSelectors.cardSection
     );
@@ -156,7 +158,7 @@ function submitAddCard(data) {
 
 function renderCard(data) {
   const card = createCard(data);
-  cardSection.addItem(card);
+  cardSection.addItem(card.getView());
 }
 
 function createCard(item) {
