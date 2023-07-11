@@ -4,10 +4,6 @@
 
 import "./index.css";
 
-import profileImageSrc from "../images/jacques-cousteau.jpg";
-
-import headerImageSrc from "../images/logo.svg";
-
 import FormValidator from "../Components/FormValidator.js";
 
 import Section from "../Components/Section.js";
