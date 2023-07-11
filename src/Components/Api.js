@@ -4,7 +4,7 @@
 export default class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
-    this._headers - headers;
+    this._headers = headers;
   }
 
   _checkResponse(res) {
@@ -47,10 +47,7 @@ export default class Api {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
-      body: JSON.stringify({
-        name,
-        link,
-      }),
+      body: JSON.stringify({ name, link }),
     }).then(this._checkResponse);
   }
 

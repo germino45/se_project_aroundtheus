@@ -25,6 +25,21 @@
   visibility: hidden;
 }
 
+.profile__button-add {
+  background: transparent url(../images/add_button.svg) center no-repeat;
+  width: 150px;
+  height: 50px;
+  background-size: 22px;
+  margin-left: auto;
+  padding: 0;
+  border: solid #fff 2px;
+  border-radius: 2px;
+}
+
+.profile__button-add:hover {
+  opacity: 0.6;
+}
+
 .profile__image-container:hover {
   opacity: 0.8;
 }
@@ -117,10 +132,18 @@
     height: 18px;
     background-size: 7.5px;
   }
+  .profile__button-add {
+    background-size: 16px;
+    width: 282px;
+    margin-left: 0;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1080px) {
   .profile {
     max-width: 760px;
   }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
 }

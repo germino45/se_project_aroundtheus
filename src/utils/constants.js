@@ -60,12 +60,22 @@ const cardAddButton = document.querySelector("#card-add-button");
 
 const addCardForm = document.querySelector("#add-form");
 
+/* --------------------------------- avatar --------------------------------- */
+
+const avatarButton = document.querySelector(".profile__picture-edit");
+
+const avatarForm = document.querySelector("#avatar-form");
+
+/* --------------------------- container selectors -------------------------- */
+
 const containerSelectors = {
   cardSection: ".cards__list",
   cardTemplate: "#card-template",
   cardPreviewPopup: "#image-modal",
   profilePopup: "#profile-modal",
   addCardPopup: "#add-modal",
+  deleteCardPopup: "#image-delete-modal",
+  avatarPopup: "#avatar-edit-modal",
 };
 
 export {
@@ -83,4 +93,6 @@ export {
   profileDescription,
   cardAddButton,
   addCardForm,
+  avatarButton,
+  avatarForm,
 };

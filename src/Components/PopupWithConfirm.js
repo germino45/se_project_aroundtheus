@@ -2,12 +2,14 @@ import Popup from "./Popup.js";
 
 export default class PopupWithConfirm extends Popup {
   constructor(popupSelector) {
-    super({ popupSelector });
+    super(popupSelector);
 
     this._popupForm = this._popupElement.querySelector(
       "#image-delete-form-fieldset"
     );
-    this._saveButton = this._popupForm.querySelector(".form__save-button");
+    this._saveButton = this._popupForm.querySelector(
+      "#image-delete-confirm-button"
+    );
   }
 
   setSubmit(action) {
