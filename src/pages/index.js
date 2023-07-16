@@ -4,10 +4,6 @@
 
 import "./index.css";
 
-import profileImageSrc from "../images/jacques-cousteau.jpg";
-
-import headerImageSrc from "../images/logo.svg";
-
 import FormValidator from "../Components/FormValidator.js";
 
 import Section from "../Components/Section.js";
@@ -84,7 +80,7 @@ const editFormPopup = new PopupWithForm(
   containerSelectors.profilePopup,
   (inputValues) => {
     editFormPopup.renderLoading(true);
-    return api
+    api
       .editUserInfo(inputValues.title, inputValues.description)
       .then(() => {
         userInfo.setUserInfo(inputValues.title, inputValues.description);
@@ -104,7 +100,7 @@ const addFormPopup = new PopupWithForm(
   (data) => {
     addFormPopup.renderLoading(true);
     api
-      .addNewCard(data)
+      .addNewCard(data.title, data.link)
       .then((data) => {
         createCard(data);
         addFormPopup.close();
@@ -164,12 +160,12 @@ function openAddForm() {
 
 const avatarPopup = new PopupWithForm(
   containerSelectors.avatarPopup,
-  (avatar) => {
+  (data) => {
     avatarPopup.renderLoading(true);
     api
-      .updateProfileAvatar(avatar)
+      .updateProfileAvatar(data.link)
       .then((res) => {
-        userInfo.setUserInfo(res);
+        userInfo.setUserInfo();
         userInfo.setAvatar(res);
         avatarPopup.close();
       })
@@ -185,15 +181,15 @@ const avatarPopup = new PopupWithForm(
 avatarButton.addEventListener("click", () => avatarPopup.open());
 
 /* ---------------------------------- cards --------------------------------- */
-function renderCard(data) {
-  const cardElement = createCard(data);
-  cardSection.addItem(cardElement.getView());
-}
 
 const createCard = (data) => {
+  const likes = data.likes || [];
   const cardElement = new Card({
-    data,
-    userId,
+    data: {
+      ...data,
+      likes: likes,
+    },
+    userId: userId,
     cardSelector: containerSelectors.cardTemplate,
     handleImageClick,
     handleDeleteClick: (cardId) => {
@@ -214,10 +210,11 @@ const createCard = (data) => {
           });
       });
     },
-    handleLikeClick: (cardId) => {
+    handleLikeClick: () => {
+      const id = cardElement.getId();
       if (cardElement.isLiked()) {
         api
-          .deleteLikes(cardId)
+          .deleteLikes(id)
           .then((res) => {
             cardElement.setLikesCounter(res.likes);
           })
@@ -226,7 +223,7 @@ const createCard = (data) => {
           });
       } else {
         api
-          .addLikes(cardId)
+          .addLikes(id)
           .then((res) => {
             cardElement.setLikesCounter(res.likes);
           })

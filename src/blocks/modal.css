@@ -29,6 +29,10 @@
   height: 181px;
 }
 
+.modal__container-avatar {
+  height: 272px;
+}
+
 .modal_opened {
   visibility: visible;
   opacity: 1;
@@ -48,6 +52,10 @@
 
 .modal__delete-close {
   bottom: 185px;
+}
+
+.modal__avatar-close {
+  bottom: 270px;
 }
 
 .modal__close-button:hover {

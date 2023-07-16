@@ -19,10 +19,12 @@
   position: absolute;
   width: 26px;
   height: 26px;
+  padding: 59px;
   border: none;
-  top: 50px;
-  left: 50px;
+  top: 0px;
+  left: 0px;
   visibility: hidden;
+  border-radius: 70%;
 }
 
 .profile__button-add {
@@ -41,12 +43,12 @@
 }
 
 .profile__image-container:hover {
-  opacity: 0.8;
+  opacity: 0.4;
 }
 
 .profile__image-container:hover .profile__picture-edit {
   visibility: visible;
-  transition: opacity 0.3s linear;
+  transition: opacity 2s linear;
 }
 
 .profile__info {
@@ -136,6 +138,10 @@
     background-size: 16px;
     width: 282px;
     margin-left: 0;
+  }
+
+  .profile__picture-edit {
+    left: 85px;
   }
 }
 
