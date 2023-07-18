@@ -42,6 +42,7 @@ import Api from "../Components/Api.js";
 
 let userId;
 let cardSection;
+let cardElement;
 
 /* ----------------------------------- API ---------------------------------- */
 
@@ -80,10 +81,14 @@ const editFormPopup = new PopupWithForm(
   containerSelectors.profilePopup,
   (inputValues) => {
     editFormPopup.renderLoading(true);
-    api
+
+    return api
       .editUserInfo(inputValues.title, inputValues.description)
       .then(() => {
-        userInfo.setUserInfo(inputValues.title, inputValues.description);
+        userInfo.setUserInfo({
+          name: inputValues.title,
+          about: inputValues.description,
+        });
         editFormPopup.close();
       })
       .catch((err) => {
@@ -95,21 +100,43 @@ const editFormPopup = new PopupWithForm(
   }
 );
 
-const addFormPopup = new PopupWithForm(
+/* ----------------------------- add card popup ----------------------------- */
+
+const addCardPopup = new PopupWithForm(
   containerSelectors.addCardPopup,
   (data) => {
-    addFormPopup.renderLoading(true);
+    addCardPopup.renderLoading(true);
     api
       .addNewCard(data.title, data.link)
       .then((data) => {
         createCard(data);
-        addFormPopup.close();
+        addCardPopup.close();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
-        addFormPopup.renderLoading(false, "Create");
+        addCardPopup.renderLoading(false, "Create");
+      });
+  }
+);
+
+const avatarPopup = new PopupWithForm(
+  containerSelectors.avatarPopup,
+  (data) => {
+    avatarPopup.renderLoading(true);
+    api
+      .updateProfileAvatar(data.link)
+      .then((res) => {
+        userInfo.setUserInfo(res);
+        userInfo.setAvatar(res);
+        avatarPopup.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        avatarPopup.renderLoading(false, "Save");
       });
   }
 );
@@ -135,6 +162,8 @@ cardAddButton.addEventListener("click", () => {
   openAddForm();
 });
 
+avatarButton.addEventListener("click", () => openAvatarForm());
+
 /* -------------------------------------------------------------------------- */
 /*                                  functions                                 */
 /* -------------------------------------------------------------------------- */
@@ -152,43 +181,22 @@ function openEditForm() {
 /* -------------------------------- add form -------------------------------- */
 
 function openAddForm() {
-  addFormPopup.open();
+  addCardPopup.open();
   addFormValidator.toggleButtonState();
 }
 
 /* ------------------------------ avatar popup ------------------------------ */
 
-const avatarPopup = new PopupWithForm(
-  containerSelectors.avatarPopup,
-  (data) => {
-    avatarPopup.renderLoading(true);
-    api
-      .updateProfileAvatar(data.link)
-      .then((res) => {
-        userInfo.setUserInfo();
-        userInfo.setAvatar(res);
-        avatarPopup.close();
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        avatarPopup.renderLoading(false, "Save");
-      });
-  }
-);
-
-avatarButton.addEventListener("click", () => avatarPopup.open());
+function openAvatarForm() {
+  avatarPopup.open();
+  avatarFormValidator.toggleButtonState();
+}
 
 /* ---------------------------------- cards --------------------------------- */
 
-const createCard = (data) => {
-  const likes = data.likes || [];
+const createCard = (cardData) => {
   const cardElement = new Card({
-    data: {
-      ...data,
-      likes: likes,
-    },
+    data: cardData,
     userId: userId,
     cardSelector: containerSelectors.cardTemplate,
     handleImageClick,
@@ -210,11 +218,10 @@ const createCard = (data) => {
           });
       });
     },
-    handleLikeClick: () => {
-      const id = cardElement.getId();
+    handleLikeClick: (cardId) => {
       if (cardElement.isLiked()) {
         api
-          .deleteLikes(id)
+          .deleteLikes(cardId)
           .then((res) => {
             cardElement.setLikesCounter(res.likes);
           })
@@ -223,7 +230,7 @@ const createCard = (data) => {
           });
       } else {
         api
-          .addLikes(id)
+          .addLikes(cardId)
           .then((res) => {
             cardElement.setLikesCounter(res.likes);
           })
@@ -258,7 +265,7 @@ avatarFormValidator.enableValidation();
 /* --------------------------- set event listeners -------------------------- */
 
 editFormPopup.setEventListeners();
-addFormPopup.setEventListeners();
+addCardPopup.setEventListeners();
 imagePopup.setEventListeners();
 deleteCardPopup.setEventListeners();
 avatarPopup.setEventListeners();
