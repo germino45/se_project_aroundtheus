@@ -67,9 +67,7 @@ api
     );
     cardSection.renderItems();
   })
-  .catch((err) => {
-    console.log(err);
-  });
+  .catch(console.error);
 
 /* -------------------------------- user info ------------------------------- */
 
@@ -91,9 +89,7 @@ const editFormPopup = new PopupWithForm(
         });
         editFormPopup.close();
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      .catch(console.error)
       .finally(() => {
         editFormPopup.renderLoading(false, "Save");
       });
@@ -112,9 +108,7 @@ const addCardPopup = new PopupWithForm(
         createCard(data);
         addCardPopup.close();
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      .catch(console.error)
       .finally(() => {
         addCardPopup.renderLoading(false, "Create");
       });
@@ -128,13 +122,10 @@ const avatarPopup = new PopupWithForm(
     api
       .updateProfileAvatar(data.link)
       .then((res) => {
-        userInfo.setUserInfo(res);
         userInfo.setAvatar(res);
         avatarPopup.close();
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      .catch(console.error)
       .finally(() => {
         avatarPopup.renderLoading(false, "Save");
       });
@@ -203,18 +194,16 @@ const createCard = (cardData) => {
     handleDeleteClick: (cardId) => {
       deleteCardPopup.open();
       deleteCardPopup.setSubmit(() => {
-        deleteCardPopup.renderLoading(true);
+        deleteCardPopup.renderDeleting(true);
         api
           .deleteUserCard(cardId)
           .then(() => {
             cardElement.handleDeleteCard();
             deleteCardPopup.close();
           })
-          .catch((err) => {
-            console.log(err);
-          })
+          .catch(console.error)
           .finally(() => {
-            deleteCardPopup.renderLoading(false, "Save");
+            deleteCardPopup.renderDeleting(false, "Yes");
           });
       });
     },
@@ -225,18 +214,14 @@ const createCard = (cardData) => {
           .then((res) => {
             cardElement.setLikesCounter(res.likes);
           })
-          .catch((err) => {
-            console.log(err);
-          });
+          .catch(console.error);
       } else {
         api
           .addLikes(cardId)
           .then((res) => {
             cardElement.setLikesCounter(res.likes);
           })
-          .catch((err) => {
-            console.log(err);
-          });
+          .catch(console.error);
       }
     },
   });

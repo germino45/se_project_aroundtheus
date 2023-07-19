@@ -24,9 +24,9 @@ export default class PopupWithConfirm extends Popup {
     });
   }
 
-  renderLoading(isLoading, saveButtonText) {
-    if (isLoading) {
-      this._saveButton.textContent = "Saving...";
+  renderDeleting(isDeleting, saveButtonText) {
+    if (isDeleting) {
+      this._saveButton.textContent = "Deleting...";
     } else {
       this._saveButton.textContent = saveButtonText;
     }
