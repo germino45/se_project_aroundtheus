@@ -63,6 +63,10 @@
   transition: 0.3s;
 }
 
+.form__save-button-confirm {
+  height: 75px;
+}
+
 .form__save-button_disabled {
   height: 50px;
   border-radius: 2px;

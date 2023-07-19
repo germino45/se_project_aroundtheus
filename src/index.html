@@ -22,12 +22,7 @@
       <main class="content">
         <section class="profile page__section">
           <div class="profile__image-container">
-            <img
-              src="<%=require('./images/jacques-cousteau.jpg')%>"
-              alt="avatar"
-              class="profile__image"
-              id="profile-image"
-            />
+            <img alt="avatar" class="profile__image" id="profile-image" />
             <button
               type="button"
               class="profile__picture-edit"
@@ -36,13 +31,13 @@
           </div>
 
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title"></h1>
             <button
               type="button"
               class="profile__edit-button button"
               id="profile-edit-button"
             ></button>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description"></p>
           </div>
           <button
             type="button"
@@ -167,10 +162,10 @@
       <!--                              avatar modal                               -->
       <!-- ----------------------------------------------------------------------- -->
       <div class="modal" id="avatar-edit-modal">
-        <div class="modal__Container">
+        <div class="modal__container modal__container-avatar">
           <button
             type="button"
-            class="modal__close-button button"
+            class="modal__close-button modal__avatar-close button"
             id="avatar-close-button"
           ></button>
           <form class="form" id="avatar-form" novalidate>
@@ -206,10 +201,10 @@
       <!--                          confirm delete modal                           -->
       <!-- ----------------------------------------------------------------------- -->
       <div class="modal" id="image-delete-modal">
-        <div class="modal__Container">
+        <div class="modal__container modal__container-confirm">
           <button
             type="button"
-            class="modal__close-button button"
+            class="modal__close-button modal__delete-close button"
             id="image-delete-close-button"
           ></button>
           <form class="form" id="image-delete-form" novalidate>
@@ -256,12 +251,14 @@
           <input type="image" src=" " alt=" " class="card__image" />
           <div class="card__info">
             <h2 class="card__text"></h2>
-            <button
-              type="button"
-              class="button card__like-button"
-              id="card-like-button"
-            ></button>
-            <p class="card__likes-counter"></p>
+            <div class="card__like-container">
+              <button
+                type="button"
+                class="button card__like-button"
+                id="card-like-button"
+              ></button>
+              <p class="card__likes-counter"></p>
+            </div>
           </div>
         </li>
       </template>
