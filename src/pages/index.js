@@ -42,7 +42,6 @@ import Api from "../Components/Api.js";
 
 let userId;
 let cardSection;
-let cardElement;
 
 /* ----------------------------------- API ---------------------------------- */
 
